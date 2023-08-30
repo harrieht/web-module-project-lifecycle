@@ -26,7 +26,11 @@ export default class App extends React.Component {
         <div id="error">Error: No error here</div>
         <div id="todos">
           <h2>todos</h2>
-          <div>Walk the dog</div>
+          {
+            this.state.todos.map(td => {
+              return <div key={td.id}>{td.name}</div>
+            })
+          }
           <div>Learn React ✓</div>
       </div>
       <form id="todoForm">

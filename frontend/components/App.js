@@ -11,14 +11,14 @@ export default class App extends React.Component {
   fetchAllTodos = () => {
     axios.get(URL)
       .then(res => {
-        debugger
+        this.setState({ ...this.state, todos: res.data.data })
       })
       .catch(err => {
         debugger
       })
   }
   componentDidMount() {
-    // fetch all todos from server
+    this.fetchAllTodos()
   }
   render() {
     return (

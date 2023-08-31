@@ -17,10 +17,11 @@ export default class App extends React.Component {
   postNewTodo = () => {
     axios.post(URL, { name: this.state.todoNameInput })
     .then(res => {
-      debugger
+      this.fetchAllTodos()
+      this.setState({ ...this.state, todoNameInput: '' })
     })
     .catch(err => {
-      debugger
+      this.setState({ ...this.state, error: err.response.data.message })
     })
   }
   onTodoFormSubmit = evt => {

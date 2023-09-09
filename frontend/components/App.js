@@ -60,9 +60,12 @@ export default class App extends React.Component {
         <div id="todos">
           <h2>todos</h2>
           {
-            this.state.todos.map(td => {
-              return <div onClick={this.toggleCompleted(td.id)} key={td.id}>{td.name} {td.completed ? ' ✔️' : ''}</div>
-            })
+            this.state.todos.reduce((acc, td) => {
+             if (this.state.displayCompleteds || !td.completed) return acc.concat(
+                <div onClick={this.toggleCompleted(td.id)} key={td.id}>{td.name} {td.completed ? ' ✔️' : ''}</div> 
+             )
+              return acc
+            }, [])         
           }
           <div>Learn React ✓</div>
       </div>
